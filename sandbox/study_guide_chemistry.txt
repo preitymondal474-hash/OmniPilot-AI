@@ -1,0 +1,14 @@
+==================================================
+OFFLINE EXAM PREPARATION GUIDE: CHEMISTRY
+==================================================
+
+### TARGET STUDY TOPICS:
+  1. [ ] Organic Chemistry: Alkane reactions and functional groups
+  2. [ ] Physical Chemistry: Thermodynamics and Gibbs Free Energy
+  3. [ ] Inorganic Chemistry: Periodic trends and coordinate complexes
+
+### ACTIVE RECALL QUIZ:
+  Q1: Write down the definition of the central concept of Chemistry without looking at notes.
+  Q2: What is the most common misconception about this subject, and how do you resolve it?
+
+Study Guide generated successfully under sandboxed agent execution environment.

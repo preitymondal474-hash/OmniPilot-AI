@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniPilot AI - Offline Multi-Agent Dashboard</title>
+  <meta name="description" content="OmniPilot AI is a secure, local-first multi-agent system and task dashboard running completely offline.">
+  
+  <!-- Typography & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <div class="app-container">
+    
+    <!-- HEADER BAR -->
+    <header class="app-header">
+      <div class="logo-area">
+        <div class="logo-icon">
+          <i class="fa-solid fa-compass-drafting"></i>
+        </div>
+        <div class="logo-text">
+          <h1>OmniPilot AI</h1>
+          <span>ADK & MCP Local Orchestration System</span>
+        </div>
+      </div>
+      
+      <!-- System Indicators -->
+      <div class="system-indicators">
+        <div class="indicator-pill" id="ind-backend">
+          <span class="status-dot green"></span>
+          <span class="ind-label">Server: Online</span>
+        </div>
+        <div class="indicator-pill" id="ind-mcp">
+          <span class="status-dot green"></span>
+          <span class="ind-label">MCP: Ready</span>
+        </div>
+        <div class="indicator-pill" id="ind-sandbox">
+          <span class="status-dot green"></span>
+          <span class="ind-label">Sandbox: Active</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- DASHBOARD CONTENT GRID -->
+    <main class="dashboard-grid">
+      
+      <!-- COLUMN 1: INTERACTION & GRAPH -->
+      <section class="grid-card col-span-2 shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-terminal"></i> Agent Mission Control</h2>
+          <span class="card-subtitle">Deploy tasks to the multi-agent sandbox system</span>
+        </div>
+        <div class="card-body console-body">
+          
+          <div class="agent-network-container">
+            <h3>Agent Interaction Diagram</h3>
+            <div class="network-canvas">
+              <div class="network-node active" id="node-planner" title="Planner Agent">
+                <i class="fa-solid fa-brain"></i>
+                <div class="node-label">Planner</div>
+              </div>
+              <div class="network-connector connector-p-s"></div>
+              <div class="network-connector connector-p-o"></div>
+              <div class="network-connector connector-p-l"></div>
+              
+              <div class="network-node" id="node-study" title="Exam/Study Agent">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div class="node-label">Study Agent</div>
+              </div>
+              
+              <div class="network-node" id="node-optimizer" title="Task Optimization Agent">
+                <i class="fa-solid fa-chart-line"></i>
+                <div class="node-label">Task Optimizer</div>
+              </div>
+              
+              <div class="network-node" id="node-scheduler" title="Life Scheduler Agent">
+                <i class="fa-solid fa-calendar-day"></i>
+                <div class="node-label">Scheduler</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="prompt-box">
+            <input type="text" id="agent-input-prompt" placeholder="Ask OmniPilot (e.g. Create a biology study guide and daily routine schedules)..." />
+            <button id="btn-run-agent" class="btn-gradient">
+              <span>Execute</span> <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+          
+          <div class="running-indicator hidden" id="running-spinner">
+            <div class="spinner"></div>
+            <span>Orchestrating agents and sandbox operations offline...</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- COLUMN 2: EXECUTION LOGS TRACE -->
+      <section class="grid-card shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-list-check"></i> Agent Trace Logs</h2>
+          <span class="card-subtitle">Real-time collaboration trace and tool events</span>
+        </div>
+        <div class="card-body trace-body" id="trace-logs-box">
+          <div class="log-placeholder">
+            <i class="fa-solid fa-route"></i>
+            <p>Ready. Enter a goal prompt to trace agent messages and tool executions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 3: FINAL REPORT OUTPUT -->
+      <section class="grid-card col-span-2 shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-clipboard-question"></i> Consolidated Report</h2>
+          <span class="card-subtitle">Planner agent final generated report output</span>
+        </div>
+        <div class="card-body report-body markdown-content" id="report-output-box">
+          <div class="log-placeholder">
+            <i class="fa-solid fa-file-invoice"></i>
+            <p>Consolidated multi-agent outputs will render here in structured Markdown format.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 4: MCP TOOL DIAGNOSTICS -->
+      <section class="grid-card shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-screwdriver-wrench"></i> MCP Tools Console</h2>
+          <span class="card-subtitle">Direct schema exploration & diagnostics</span>
+        </div>
+        <div class="card-body tools-body">
+          <div class="tool-list" id="mcp-tools-list">
+            <!-- Dynamically populated -->
+          </div>
+          
+          <div class="tool-test-box">
+            <h4>Quick Diagnostics Tool Exec</h4>
+            <div class="form-group">
+              <label for="diag-tool-select">Select Tool:</label>
+              <select id="diag-tool-select">
+                <option value="system_status">system_status</option>
+                <option value="calculator">calculator</option>
+                <option value="search_tasks">search_tasks</option>
+              </select>
+            </div>
+            <div class="form-group hidden" id="group-diag-arg">
+              <label for="diag-tool-args">Arguments (JSON string):</label>
+              <input type="text" id="diag-tool-args" placeholder='{"expression": "2 + 2"}' />
+            </div>
+            <button id="btn-run-diagnostic" class="btn-subtle">Run Diagnostic Test</button>
+            <div class="diag-output hidden" id="diag-output-box"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 5: SYSTEM SECURITY LOG PANEL -->
+      <section class="grid-card shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-shield-halved"></i> Security Sandbox Log</h2>
+          <span class="card-subtitle">Real-time path and instruction guardrail alerts</span>
+        </div>
+        <div class="card-body security-body" id="security-alerts-box">
+          <div class="security-ok">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Sandbox status: SECURE. No unauthorized filesystem or command paths detected.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 6: ACTIVE TASK DATABASE STATE -->
+      <section class="grid-card shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-database"></i> Tasks Database State</h2>
+          <span class="card-subtitle">Active values stored in local `tasks.json` database</span>
+        </div>
+        <div class="card-body database-body">
+          <div class="task-grid-header">
+            <span>Task ID</span>
+            <span>Task Title</span>
+            <span>Assignee</span>
+            <span>Priority</span>
+            <span>Status</span>
+          </div>
+          <div class="task-grid-rows" id="task-database-rows">
+            <div class="db-empty">No tasks tracked in tasks.json.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COLUMN 7: FILESYSTEM SANDBOX BROWSER -->
+      <section class="grid-card shadow-glow">
+        <div class="card-header">
+          <h2><i class="fa-solid fa-folder-open"></i> Workspace Sandboxed Files</h2>
+          <span class="card-subtitle">Output artifacts written inside sandbox/ directory</span>
+        </div>
+        <div class="card-body files-body">
+          <ul class="file-list" id="sandbox-file-list">
+            <!-- Dynamically populated files -->
+            <li class="file-empty">No workspace files created yet.</li>
+          </ul>
+          
+          <div class="file-preview-panel hidden" id="file-preview-panel">
+            <div class="preview-header">
+              <span id="preview-filename">file.txt</span>
+              <button id="btn-close-preview" title="Close Preview"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <pre class="preview-content" id="preview-content-box"></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p>&copy; 2026 OmniPilot AI - Secure Local Multi-Agent System Capstone Project. Operating completely offline.</p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

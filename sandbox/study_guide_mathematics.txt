@@ -1,0 +1,14 @@
+==================================================
+OFFLINE EXAM PREPARATION GUIDE: MATHEMATICS
+==================================================
+
+### TARGET STUDY TOPICS:
+  1. [ ] Calculus: Limits, Derivatives, and Integrals
+  2. [ ] Linear Algebra: Vector transformations and Matrix operations
+  3. [ ] Probability: Bayes Theorem and conditional distributions
+
+### ACTIVE RECALL QUIZ:
+  Q1: Write down the definition of the central concept of Mathematics without looking at notes.
+  Q2: What is the most common misconception about this subject, and how do you resolve it?
+
+Study Guide generated successfully under sandboxed agent execution environment.

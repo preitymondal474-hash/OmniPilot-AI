@@ -1,0 +1,26 @@
+[
+  {
+    "id": "T-101",
+    "title": "Review Study Guide syllabus objectives",
+    "priority": "CRITICAL",
+    "status": "Pending",
+    "agent": "Exam/Study Agent",
+    "timeAllocated": "4 Hours"
+  },
+  {
+    "id": "T-102",
+    "title": "Map daily life routine calendar buffers",
+    "priority": "HIGH",
+    "status": "Pending",
+    "agent": "Life Scheduler Agent",
+    "timeAllocated": "1 Hour"
+  },
+  {
+    "id": "T-103",
+    "title": "Perform Sandbox system verification check",
+    "priority": "MEDIUM",
+    "status": "Completed",
+    "agent": "Planner Agent",
+    "timeAllocated": "30 Mins"
+  }
+]
