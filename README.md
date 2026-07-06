@@ -123,6 +123,12 @@ Run the CLI:
 npm run cli
 ```
 
+## 📖 Overview
+
+OmniPilot AI is a secure, local-first multi-agent system that demonstrates the integration of the Agent Development Kit (ADK) and the Model Context Protocol (MCP). It provides an interactive web dashboard and CLI for task planning, study management, scheduling, and task optimization while ensuring secure file operations through a sandboxed environment. The project runs entirely offline without requiring external APIs or cloud services.
+
+
+
 ## 🔐 Security
 
 - Sandboxed file access
